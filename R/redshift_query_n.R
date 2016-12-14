@@ -88,7 +88,7 @@ redshift_query_n <- function(sql.string, conn, bucket, transform.function = NULL
     cat(sprintf('reading from bucket %s key %s\n', bucket, key))
 
     obj <- aws.s3::get_object(key, bucket)
-    read.csv(text = rawToChar(obj), header = TRUE, stringsAsFactors = FALSE)
+    read.csv(text = rawToChar(obj), header = FALSE, stringsAsFactors = FALSE)
 
   }
 
