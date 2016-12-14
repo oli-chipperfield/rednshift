@@ -1,6 +1,6 @@
 # rednshift for R
 
-Provides a new function that permits the querying of very large datasets (n millions of rows) from redshift.  It's a companion to [pingles redshift](https://github.com/pingles/redshift-r) package which is itself a companion to [Amazon's Redshift](http://aws.amazon.com/redshift/) service from R.
+Provides a new function that permits the querying of very large datasets (n millions of rows) from redshift.  It's a companion to [pingles redshift](https://github.com/pingles/redshift-r) package which is itself a companion to [Amazon's Redshift](http://aws.amazon.com/redshift/) service for R.
 
 The library contains only one function, redshift_query_n.  
 
