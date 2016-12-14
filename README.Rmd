@@ -8,7 +8,7 @@ It works by dumping interim files to a nominated AWS bucket, it then sequentiall
 
 ## Installing
 
-You'll need several package dependencies.  Most will be available on CRAN and will install automatically when installing the package.  A couple will have to be installed from github.  For this you'll need devtools installed.
+You'll need several package dependencies.  Most will be available on CRAN and will install automatically when installing the package.  A few will have to be installed from github.  For this you'll need devtools installed.
 
     install.packages("devtools")
 
@@ -24,15 +24,15 @@ And now [aws.s3](https://github.com/cloudyr/aws.s3):
 
 latest stable version
 
-        install.packages("aws.s3", repos = c("cloudyr" = "http://cloudyr.github.io/drat"))
+    install.packages("aws.s3", repos = c("cloudyr" = "http://cloudyr.github.io/drat"))
 
 on windows you may need:
 
-        install.packages("aws.s3", repos = c("cloudyr" = "http://cloudyr.github.io/drat"), INSTALL_opts = "--no-multiarch")
+    install.packages("aws.s3", repos = c("cloudyr" = "http://cloudyr.github.io/drat"), INSTALL_opts = "--no-multiarch")
 
 The last step is to install the rednshift package itself:
 
-    devtools::install_github("uswitch/uswitch-insight/rednshift", auth_token = "ab7e87d12c281ca8866dee7b84887d8c49566918")
+    devtools::install_github("OLICHIPPERFIELD/rednshift")
 
 ## Usage
 
