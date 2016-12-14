@@ -1,0 +1,17 @@
+Package: rednshift
+Title: rednshift
+Version: 1.0
+Authors: Richard Lewis Jones <richard.lewis.jones@uswitch.com> & Oliver Chipperfield <oliver.chipperfield@uswitch.com>
+Maintainer: Oliver Chipperfield <oliver.chipperfield@uswitch.com>
+Description: Function for retrieving very large data sets from redshift.  Optionally utilises parallel processing.
+Depends:
+    R (>= 3.1.3),
+    data.table,
+    stringi,
+    redshift,
+    doParallel,
+    foreach,
+    plyr,
+    aws.s3
+LazyData: true
+RoxygenNote: 5.0.1
