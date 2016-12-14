@@ -15,17 +15,20 @@ You'll need several package dependencies.  Most will be available on CRAN and wi
 You'll then need to install redshift.
 
     devtools::install_github("pingles/redshift-r")
-    
-You'll also need [aws.s3](https://github.com/cloudyr/aws.s3).
 
-    if (!require("ghit")) {
-        install.packages("ghit")
-    }
-    ghit::install_github(c("hadley/xml2", "cloudyr/aws.s3"))
+You'll need a developmentment version of [xml2](https://github.com/hadley/xml2) to support [aws.s3](https://github.com/cloudyr/aws.s3):
 
-On windows you may need to specify:
+        devtools::install_github("hadley/xml2")
 
-    ghit::install_github(c("hadley/xml2", "cloudyr/aws.s3"), INSTALL_opts = "--n  o-multiarch")
+And now [aws.s3](https://github.com/cloudyr/aws.s3):
+
+latest stable version
+
+        install.packages("aws.s3", repos = c("cloudyr" = "http://cloudyr.github.io/drat"))
+
+on windows you may need:
+
+        install.packages("aws.s3", repos = c("cloudyr" = "http://cloudyr.github.io/drat"), INSTALL_opts = "--no-multiarch")
 
 The last step is to install the rednshift package itself:
 
