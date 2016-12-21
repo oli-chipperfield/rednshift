@@ -77,7 +77,7 @@ redshift_query_n <- function(sql.string, conn, bucket, transform.function = NULL
 
     entries <- aws.s3::get_bucket(bucket, key.prefix)
 
-    keys <- unlist(llply(seq(6,NROW(entries),1), function(x) {entries[[x]]$Key}))
+    keys <- unlist(llply(seq(1,NROW(entries),1), function(x) {entries[[x]]$Key}))
 
     return(keys)}
 
