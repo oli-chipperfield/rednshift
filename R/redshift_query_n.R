@@ -63,7 +63,7 @@
 redshift_query_n <- function(sql.string, conn, bucket, transform.function = NULL, parallel = FALSE, cores = NULL, package.list = NULL) {
 
 
-  execute_redshift_query <- function(sql.string) {
+  execute_redshift_query <- function(sql.string, conn, bucket, aws.role) {
 
     rand.prefix <- stri_rand_strings(1, 20)
 
@@ -71,9 +71,9 @@ redshift_query_n <- function(sql.string, conn, bucket, transform.function = NULL
     key.prefix <- paste0("parallel-query-dump/output/",rand.prefix,"/")
 
     redshift.unload(conn, sql.string,
-                    filename = paste0('s3://', bucket, '/', key.prefix),
+                    filename = paste0("s3://", bucket, "/", key.prefix),
                     delim = ",", zip = F,
-                    aws.role = 'arn:aws:iam::136393635417:role/RedshiftCopyUnload')
+                    aws.role = paste0("arn:aws:iam::" ,aws.role, ":role/RedshiftCopyUnload")
 
     entries <- aws.s3::get_bucket(bucket, key.prefix)
 
@@ -83,11 +83,11 @@ redshift_query_n <- function(sql.string, conn, bucket, transform.function = NULL
 
     return(keys)}
 
-  keys <- execute_redshift_query(sql.string)
+  keys <- execute_redshift_query(sql.string, conn, bucket, aws.role)
 
   readDataFromS3 <- function(key) {
 
-    cat(sprintf('reading from bucket %s key %s\n', bucket, key))
+    cat(sprintf("reading from bucket %s key %s\n", bucket, key))
 
     obj <- aws.s3::get_object(key, bucket)
     read.csv(text = rawToChar(obj), header = FALSE, stringsAsFactors = FALSE)
@@ -118,7 +118,7 @@ redshift_query_n <- function(sql.string, conn, bucket, transform.function = NULL
 
   data <- tryCatch(if(is.null(transform.function))
 
-        {rbindlist(llply(keys, readDataFromS3(key)))} else
+        {rbindlist(llply(keys, readDataFromS3))} else
 
         {rbindlist(llply(keys, function(x) {transform.function(readDataFromS3(x))}))},
 
