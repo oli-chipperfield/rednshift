@@ -3,6 +3,7 @@
 #' @param sql.string  SQL Query string
 #' @param conn  Redshift database connection object
 #' @param bucket  AWS bucket to store unload files
+#' @param aws.role AWS role ID as string
 #' @param transform.function function object detailing additional transformations to perform on the data
 #' @param parallel TRUE or FALSE, do you want to do parallel processing.  Defaults to FALSE
 #' @param cores  Cores to utilise, defaults to NULL, if NULL will detect cores on machine and utilise all of them.  If parallel = FALSE parameter is not needed.
@@ -32,6 +33,10 @@
 #'
 #' # A transformation function used to make additional alterations on the data
 #'
+#' # Additional aws.role string
+#'
+#' aws.role <- "an-aws-role"
+#'
 #' transform.function <- function(x) {data.table(x)}
 #'
 #' # Decide if you want to do parallel processing, if no
@@ -60,7 +65,7 @@
 #' @export
 
 
-redshift_query_n <- function(sql.string, conn, bucket, transform.function = NULL, parallel = FALSE, cores = NULL, package.list = NULL) {
+redshift_query_n <- function(sql.string, conn, bucket, aws.role, transform.function = NULL, parallel = FALSE, cores = NULL, package.list = NULL) {
 
 
   execute_redshift_query <- function(sql.string, conn, bucket, aws.role) {
