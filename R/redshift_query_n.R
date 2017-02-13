@@ -31,11 +31,11 @@
 #'
 #' bucket <- "an-aws-bucket"
 #'
-#' # A transformation function used to make additional alterations on the data
-#'
 #' # Additional aws.role string
 #'
 #' aws.role <- "an-aws-role"
+#'
+#' # A transformation function used to make additional alterations on the data
 #'
 #' transform.function <- function(x) {data.table(x)}
 #'
