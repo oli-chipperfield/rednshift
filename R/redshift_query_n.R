@@ -78,7 +78,7 @@ redshift_query_n <- function(sql.string, conn, bucket, aws.role, transform.funct
     redshift.unload(conn, sql.string,
                     filename = paste0("s3://", bucket, "/", key.prefix),
                     delim = ",", zip = F,
-                    aws.role = paste0("arn:aws:iam::" ,aws.role, ":role/RedshiftCopyUnload")
+                    aws.role = paste0("arn:aws:iam::" ,aws.role, ":role/RedshiftCopyUnload"))
 
     entries <- aws.s3::get_bucket(bucket, key.prefix)
 
