@@ -42,7 +42,7 @@ The help file will give you advice on the usage of the redshift_query_n.
     
     help(redshift_query_n)
     
-One important factor to take into account is that you need an AWS bucket available and the relevant environment credentials to access it.  Note however that the bucket is a temporary store for the data and the interim files are deleted from the bucket in the "clean up" part of the query execution.
+One important factor to take into account is that you need an AWS bucket available and the relevant environment credentials and AWS role to access it.  Note however that the bucket is a temporary store for the data and the interim files are deleted from the bucket in the "clean up" part of the query execution.
 
 ## License
 
