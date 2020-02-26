@@ -32,7 +32,7 @@ on windows you may need:
 
 The last step is to install the rednshift package itself:
 
-    devtools::install_github("OLICHIPPERFIELD/rednshift")
+    devtools::install_github("oli-chipperfield/rednshift")
 
 ## Usage
 
